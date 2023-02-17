@@ -1,32 +1,29 @@
 #include <stdio.h>
-#include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
 /**
- * main - Entyr point
- * Description: prints two digits combination
+ * main - Entry point
+ * Description: checks on the last digit of the assigned var
  * Return: Always 0 (success)
  */
 int main(void)
 {
-	int c, i;
+	int n, m;
 
-	for (c = '0'; c <= '9'; c++)
+	srand(time(0));
+	n = rand() - RAND_MAX / 2;
+	m = n % 10;
+	if (m > 5)
 	{
-		for (i = '0'; i <= '9'; i++)
-		{
-			if (c < i)
-			{
-				putchar(c);
-				putchar(i);
-
-				if (c != '8' || (c == '8' && i != '9'))
-				{
-					putchar(',');
-					putchar(' ');
-				}
-			}
-		}
+		printf("Last digit of %d is %d and is greater than 5\n", n, m);
 	}
-	putchar('\n');
+	else if (m < 6 && m != 0)
+	{
+		printf("Last digit of %d is %d and is less than 6 and not 0\n", n, m);
+	}
+	else
+	{
+		printf("Last digit of %d is %d and is 0\n", n, m);
+	}
 	return (0);
 }
-
