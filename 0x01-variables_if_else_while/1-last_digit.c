@@ -1,27 +1,32 @@
-#include <time.h>
 #include <stdio.h>
-/* more headers goes there */
-/* betty style doc for function main goes there */
+#include <unistd.h>
 /**
- * main - Entry  point
- *
+ * main - Entyr point
+ * Description: prints two digits combination
  * Return: Always 0 (success)
  */
 int main(void)
 {
-        int n;
+	int c, i;
 
-        int m;
+	for (c = '0'; c <= '9'; c++)
+	{
+		for (i = '0'; i <= '9'; i++)
+		{
+			if (c < i)
+			{
+				putchar(c);
+				putchar(i);
 
-        srand(time(0));
-        n = rand() - RAND_MAX / 2;
-        /* your code goes there */
-        m = n % 10;
-        if (m > 5)
-                printf("Last digit of %d is %d and is greater than 5\n", n, m);
-        if (m == 0)
-                printf("Last digit of %d is %d and is 0\n", n, m);
-        if (m < 6 && m != 0)
-                printf("Last digit of %d is %d and is less than 6 and not  0\n", n, m);
-        return (0);
+				if (c != '8' || (c == '8' && i != '9'))
+				{
+					putchar(',');
+					putchar(' ');
+				}
+			}
+		}
+	}
+	putchar('\n');
+	return (0);
 }
+
